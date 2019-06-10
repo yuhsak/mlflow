@@ -1,0 +1,22 @@
+{
+  "name": "mlflow",
+  "version": "1.0.0",
+  "description": "MLflow api client for Node.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuhsak/mlflow.git"
+  },
+  "author": "Yuhsak Inoue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yuhsak/mlflow/issues"
+  },
+  "homepage": "https://github.com/Yuhsak/mlflow#readme",
+  "dependencies": {
+    "isomorphic-unfetch": "^3.0.0"
+  }
+}
