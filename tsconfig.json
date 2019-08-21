@@ -1,12 +1,12 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "moduleResolution": "node",
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "commonjs",
+		"moduleResolution": "node",
 		"strict": true,
 		"esModuleInterop": true,
-    "skipLibCheck": true,
-    "declaration": true,
+		"skipLibCheck": true,
+		"declaration": true,
 		"pretty": true,
 		"rootDir": "src",
 		"outDir": "dist/lib",
