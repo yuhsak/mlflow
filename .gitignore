@@ -1,7 +1,5 @@
 test.ts
-**/*.d.ts
-**/*.js
-!entrypoint.js
+lib/
 
 # Logs
 logs
