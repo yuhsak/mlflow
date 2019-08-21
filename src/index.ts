@@ -1,27 +1,42 @@
-const qs = require('querystring')
-const fetch = require('isomorphic-unfetch')
+import qs from 'querystring'
+import fetch from 'isomorphic-unfetch'
 
-module.exports = class MLflow {
+export interface ConstructorProps {
+	endpoint: string,
+	headers?: HeadersInit,
+	version?: string
+}
+
+export default class MLflow {
+
+	endpoint: string
+	headers?: HeadersInit
+	version?: string
+	contentType: string
+	accept: string
+	path: string
 	
-	constructor({endpoint, headers={}, version='2.0'}){
+	constructor({endpoint, headers={}, version='2.0'}:ConstructorProps) {
 		this.endpoint = endpoint
 		this.headers = headers
 		this.version = version
 		this.contentType = 'application/json'
 		this.accept = 'application/json'
+		this.path = '/'
 	}
 	
-	requestUrl(path) {
-		return `${this.endpoint}/api/${this.version}/mlflow/${this.path||''}${path}`
+	requestUrl(path:string):string {
+		return `${this.endpoint}/api/${this.version}/mlflow${this.path}${path}`
 	}
 	
-	async req(method, path, param, headers={}){
+	async req(method:string, path:string, param:any, headers:HeadersInit={}):Promise<any> {
 		const url = this.requestUrl(path)
 		const requestHeaders = {...this.headers, ...headers, ...{'Accept': this.accept}}
 		
 		const promise = (async () => {
 			if( ['put', 'post', 'patch'].some(m => new RegExp(m, 'i').test(method)) ){
 				const body = JSON.stringify(param)
+				console.log(body)
 				return fetch(url, {method, headers: {...requestHeaders, 'Content-Type': this.contentType}, body})
 			} else {
 				const query = param
@@ -70,7 +85,7 @@ module.exports = class MLflow {
 	
 }
 
-const Experiments = require('./experiments')
-const Runs = require('./runs')
-const Metrics = require('./metrics')
-const Artifacts = require('./artifacts')
+import Experiments from './experiments'
+import Runs from './runs'
+import Metrics from './metrics'
+import Artifacts from './artifacts'
