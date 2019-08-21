@@ -14,7 +14,7 @@ const MLflow = require('mlflow')
 
 const client = new MLflow({endpoint: 'http://localhost:5000'})
 
-const {Experiments, Runs, Metrics, Params, Artifacts} = client
+const {Experiments, Runs, Metrics, Artifacts} = client
 
 ;(async () => {
 	
@@ -25,11 +25,11 @@ const {Experiments, Runs, Metrics, Params, Artifacts} = client
 	// Get list of all runs in specific experiment
 	const {runs} = await Runs.search({experiment_ids: [experiment.experiment_id]})
 	const {info, data} = runs[0]
-	const {run_uuid} = info
+	const {run_id} = info
 	
-	// Get metric from a run
-	const auc_score = await Params.get({run_uuid, metric_key: 'auc_score'})
-	console.log(auc_score)
+	// Get metric history
+	const auc_history = await Metrics.getHistory({run_id, metric_key: 'auc_score'})
+	console.log(auc_history)
 	
 })()
 ```
@@ -52,9 +52,12 @@ const {Experiments, Runs, Metrics, Params, Artifacts} = client
 
 - [**Experiments**](https://github.com/Yuhsak/mlflow/blob/master/src/experiments.js)
 	- create
+	- restore
+	- get
 	- list
 	- update
 	- delete
+	- setExperimentTag
 
 - [**Runs**](https://github.com/Yuhsak/mlflow/blob/master/src/runs.js)
 	- create
@@ -66,12 +69,10 @@ const {Experiments, Runs, Metrics, Params, Artifacts} = client
 	- logMetric
 	- logParam
 	- setTag
-
-- [**Params**](https://github.com/Yuhsak/mlflow/blob/master/src/params.js)
-	- get
+	- deleteTag
+	- logBatch
 
 - [**Metrics**](https://github.com/Yuhsak/mlflow/blob/master/src/metrics.js)
-	- get
 	- getHistory
 
 - [**Artifacts**](https://github.com/Yuhsak/mlflow/blob/master/src/artifacts.js)
