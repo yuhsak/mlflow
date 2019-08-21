@@ -1,13 +1,12 @@
 {
   "name": "mlflow",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "MLflow api client for Node.js",
   "main": "entrypoint.js",
-  "types": "base.d.ts",
+  "types": "mlflow.d.ts",
   "files": [
     "*.d.ts",
     "*.js",
-    "!test.*",
     "LICENSE",
     "README.md"
   ],

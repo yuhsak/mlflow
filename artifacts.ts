@@ -1,4 +1,4 @@
-import { MLflowBase, ConstructorProps } from './base'
+import { MLflowBase, ConstructorProps } from './mlflow'
 import { FileInfo } from './interface';
 
 export default class Artifacts extends MLflowBase {

@@ -1,4 +1,4 @@
-import { MLflowBase, ConstructorProps } from './base'
+import { MLflowBase, ConstructorProps } from './mlflow'
 import { Metric } from './interface';
 
 export default class Metrics extends MLflowBase {
