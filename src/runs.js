@@ -30,9 +30,17 @@ module.exports = class Runs extends MLflow {
 	setTag({run_uuid, key, value}) {
 		return this.req('post', '/set-tag', {run_uuid, key, value})
 	}
+
+	deleteTag({run_id, key}) {
+		return this.req('post', '/delete-tag', {run_id, key})
+	}
 	
 	logParameter({run_uuid, key, value}) {
 		return this.req('post', '/log-parameter', {run_uuid, key, value})
+	}
+
+	logBatch({run_id, metrics, params, tags}) {
+		return this.req('post', '/log-batch', {run_id, metrics, params, tags})
 	}
 	
 	search({experiment_ids, ...param}) {
