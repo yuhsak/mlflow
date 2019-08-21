@@ -31,7 +31,7 @@ module.exports = class Runs extends MLflow {
 		return this.req('post', '/set-tag', {run_uuid, key, value})
 	}
 	
-	logParam({run_uuid, key, value}) {
+	logParameter({run_uuid, key, value}) {
 		return this.req('post', '/log-parameter', {run_uuid, key, value})
 	}
 	
