@@ -52,7 +52,7 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 	- Key-Value pairs of RequestHeaders which will be passed for fetch method. 
 	- ex.) {Authorization: 'Bearer abcdefgh'}
 
-#### Props
+#### Props 
 
 - [Experiments](https://github.com/Yuhsak/mlflow/blob/master/src/experiments.ts)
 - [Runs](https://github.com/Yuhsak/mlflow/blob/master/src/runs.ts)
