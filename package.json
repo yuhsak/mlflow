@@ -1,6 +1,6 @@
 {
   "name": "mlflow",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "MLflow api client for Node.js",
   "main": "entrypoint.js",
   "types": "dist/types/index.d.ts",
