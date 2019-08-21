@@ -58,10 +58,6 @@ module.exports = class MLflow {
 		return new Runs({endpoint: this.endpoint, version: this.version, headers: this.headers})
 	}
 	
-	get Params() {
-		return new Params({endpoint: this.endpoint, version: this.version, headers: this.headers})
-	}
-	
 	get Metrics() {
 		return new Metrics({endpoint: this.endpoint, version: this.version, headers: this.headers})
 	}
@@ -74,6 +70,5 @@ module.exports = class MLflow {
 
 const Experiments = require('./experiments')
 const Runs = require('./runs')
-const Params = require('./params')
 const Metrics = require('./metrics')
 const Artifacts = require('./artifacts')
