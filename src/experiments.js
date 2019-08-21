@@ -26,6 +26,14 @@ class Experiments extends MLflow {
 	update({experiment_id, new_name}) {
 		return this.req('post', '/update', {experiment_id, new_name})
 	}
+
+	restore({experiment_id}) {
+		return this.req('post', '/restore', {experiment_id})
+	}
+
+	setExperimentTag({experiment_id, key, value}) {
+		return this.req('post', 'set-experiment-tag', {experiment_id, key, value})
+	}
 	
 }
 
