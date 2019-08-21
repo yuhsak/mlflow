@@ -28,7 +28,7 @@ const {Experiments, Runs, Metrics, Params, Artifacts} = client
 	const {run_uuid} = info
 	
 	// Get metric from a run
-	const auc_score = Params.get({run_uuid, metric_key: 'auc_score'})
+	const auc_score = await Params.get({run_uuid, metric_key: 'auc_score'})
 	console.log(auc_score)
 	
 })()
