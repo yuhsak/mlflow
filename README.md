@@ -54,12 +54,12 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 
 #### Props
 
-- [Experiments](https://github.com/Yuhsak/mlflow/blob/master/experiments.ts)
-- [Runs](https://github.com/Yuhsak/mlflow/blob/master/runs.ts)
-- [Metrics](https://github.com/Yuhsak/mlflow/blob/master/metrics.ts)
-- [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/artifacts.ts)
+- [Experiments](https://github.com/Yuhsak/mlflow/blob/master/src/experiments.ts)
+- [Runs](https://github.com/Yuhsak/mlflow/blob/master/src/runs.ts)
+- [Metrics](https://github.com/Yuhsak/mlflow/blob/master/src/metrics.ts)
+- [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/src/artifacts.ts)
 
-### [Experiments](https://github.com/Yuhsak/mlflow/blob/master/experiments.ts)
+### [Experiments](https://github.com/Yuhsak/mlflow/blob/master/src/experiments.ts)
 
 - create()
 - restore()
@@ -69,7 +69,7 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 - delete()
 - setExperimentTag()
 
-### [Runs](https://github.com/Yuhsak/mlflow/blob/master/runs.ts)
+### [Runs](https://github.com/Yuhsak/mlflow/blob/master/src/runs.ts)
 
 - create()
 - restore()
@@ -83,11 +83,11 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 - deleteTag()
 - logBatch()
 
-### [Metrics](https://github.com/Yuhsak/mlflow/blob/master/metrics.ts)
+### [Metrics](https://github.com/Yuhsak/mlflow/blob/master/src/metrics.ts)
 
 - getHistory()
 
-### [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/artifacts.ts)
+### [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/src/artifacts.ts)
 
 - list()
 
