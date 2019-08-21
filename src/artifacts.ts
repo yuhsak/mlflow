@@ -1,7 +1,7 @@
-import MLflow, { ConstructorProps } from './index'
+import { MLflowBase, ConstructorProps } from './index'
 import { FileInfo } from './interface';
 
-export default class Artifacts extends MLflow {
+export default class Artifacts extends MLflowBase {
 	
 	constructor(args:ConstructorProps) {
 		super(args)

@@ -1,6 +1,7 @@
 test.js
 test.ts
-dist/
+lib/
+types/
 
 # Logs
 logs

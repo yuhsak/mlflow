@@ -1,3 +1,5 @@
+import {RunStatus, LifecycleStage} from './enum'
+
 export interface Experiment {
 	experiment_id: string,
 	name: string,
@@ -56,23 +58,4 @@ export interface Param {
 export interface RunTag {
 	key: string,
 	value: string
-}
-
-export enum ViewType {
-	ACTIVE_ONLY = 'ACTIVE_ONLY',
-	DELETED_ONLY = 'DELETED_ONLY',
-	ALL = 'ALL'
-}
-
-export enum RunStatus {
-	RUNNING = 'RUNNNING',
-	SCHEDULED = 'SCHEDULED',
-	FINISHED = 'FINISHED',
-	FAILED = 'FAILED',
-	KILLED = 'KILLED'
-}
-
-export enum LifecycleStage {
-	active = 'active',
-	deleted = 'deleted'
 }

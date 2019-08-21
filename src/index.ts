@@ -1,5 +1,6 @@
 import qs from 'querystring'
 import fetch from 'isomorphic-unfetch'
+import {ViewType} from './enum'
 
 export interface ConstructorProps {
 	endpoint: string,
@@ -7,37 +8,33 @@ export interface ConstructorProps {
 	version?: string
 }
 
-export default class MLflow {
+export class MLflowBase {
 
 	endpoint: string
 	headers?: HeadersInit
 	version?: string
-	contentType: string
-	accept: string
-	path: string
+	protected path: string
 	
 	constructor({endpoint, headers={}, version='2.0'}:ConstructorProps) {
 		this.endpoint = endpoint
 		this.headers = headers
 		this.version = version
-		this.contentType = 'application/json'
-		this.accept = 'application/json'
 		this.path = '/'
 	}
 	
-	requestUrl(path:string):string {
+	protected requestUrl(path:string):string {
 		return `${this.endpoint}/api/${this.version}/mlflow${this.path}${path}`
 	}
 	
-	async req(method:string, path:string, param:any, headers:HeadersInit={}):Promise<any> {
+	protected async req(method:string, path:string, param:any, headers:HeadersInit={}):Promise<any> {
 		const url = this.requestUrl(path)
-		const requestHeaders = {...this.headers, ...headers, ...{'Accept': this.accept}}
+		const requestHeaders = {...this.headers, ...headers, ...{'Accept': 'application/json'}}
 		
 		const promise = (async () => {
 			if( ['put', 'post', 'patch'].some(m => new RegExp(m, 'i').test(method)) ){
 				const body = JSON.stringify(param)
 				console.log(body)
-				return fetch(url, {method, headers: {...requestHeaders, 'Content-Type': this.contentType}, body})
+				return fetch(url, {method, headers: {...requestHeaders, 'Content-Type': 'application/json'}, body})
 			} else {
 				const query = param
 					? '?' + qs.stringify(
@@ -67,6 +64,14 @@ export default class MLflow {
 		}	
 	}
 	
+}
+
+export default class MLflow extends MLflowBase {
+	
+	constructor(args:ConstructorProps) {
+		super(args)
+	}
+
 	get Experiments() {
 		return new Experiments({endpoint: this.endpoint, version: this.version, headers: this.headers})
 	}
@@ -82,7 +87,7 @@ export default class MLflow {
 	get Artifacts() {
 		return new Artifacts({endpoint: this.endpoint, version: this.version, headers: this.headers})
 	}
-	
+
 }
 
 import Experiments from './experiments'

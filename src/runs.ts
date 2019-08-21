@@ -1,7 +1,8 @@
-import MLflow, { ConstructorProps } from './index'
-import { Run, ViewType, RunInfo, RunStatus, Metric, Param, RunTag } from './interface';
+import { MLflowBase, ConstructorProps } from './index'
+import { Run, RunInfo, Metric, Param, RunTag } from './interface';
+import { ViewType, RunStatus } from './enum'
 
-export default class Runs extends MLflow {
+export default class Runs extends MLflowBase {
 
 	constructor(args:ConstructorProps) {
 		super(args)
