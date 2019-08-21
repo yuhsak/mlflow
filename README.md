@@ -11,6 +11,7 @@ npm install mlflow
 
 ```js
 const MLflow = require('mlflow')
+const {ViewType, RunState, LifecysleStage} = require('mlflow/enum')
 
 const client = new MLflow({endpoint: 'http://localhost:5000'})
 
@@ -22,8 +23,11 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 	const {experiments} = await Experiments.list()
 	const experiment = experiments[0]
 	
-	// Get list of all runs in specific experiment
-	const {runs} = await Runs.search({experiment_ids: [experiment.experiment_id]})
+	// Get list of all active runs in specific experiment
+	const {runs} = await Runs.search({
+		experiment_ids: [experiment.experiment_id],
+		run_view_type: ViewType.ACTIVE_ONLY
+	})
 	const {info, data} = runs[0]
 	const {run_id} = info
 	
@@ -38,7 +42,7 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 
 ### MLflow
 
-#### constructor
+#### Constructor
 
 - **endpoint**:string (required)
 	- MLflow server's endpoint url
@@ -48,35 +52,44 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 	- Key-Value pairs of RequestHeaders which will be passed for fetch method. 
 	- ex.) {Authorization: 'Bearer abcdefgh'}
 
-#### props and methods
+#### Props
 
-- [**Experiments**](https://github.com/Yuhsak/mlflow/blob/master/src/experiments.js)
-	- create
-	- restore
-	- get
-	- list
-	- update
-	- delete
-	- setExperimentTag
+- [Experiments](https://github.com/Yuhsak/mlflow/blob/master/experiments.ts)
+- [Runs](https://github.com/Yuhsak/mlflow/blob/master/runs.ts)
+- [Metrics](https://github.com/Yuhsak/mlflow/blob/master/metrics.ts)
+- [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/artifacts.ts)
 
-- [**Runs**](https://github.com/Yuhsak/mlflow/blob/master/src/runs.js)
-	- create
-	- restore
-	- get
-	- search
-	- update
-	- delete
-	- logMetric
-	- logParam
-	- setTag
-	- deleteTag
-	- logBatch
+### [Experiments](https://github.com/Yuhsak/mlflow/blob/master/experiments.ts)
 
-- [**Metrics**](https://github.com/Yuhsak/mlflow/blob/master/src/metrics.js)
-	- getHistory
+- create()
+- restore()
+- get()
+- list()
+- update()
+- delete()
+- setExperimentTag()
 
-- [**Artifacts**](https://github.com/Yuhsak/mlflow/blob/master/src/artifacts.js)
-	- list
+### [Runs](https://github.com/Yuhsak/mlflow/blob/master/runs.ts)
+
+- create()
+- restore()
+- get()
+- search()
+- update()
+- delete()
+- logMetric()
+- logParam()
+- setTag()
+- deleteTag()
+- logBatch()
+
+### [Metrics](https://github.com/Yuhsak/mlflow/blob/master/metrics.ts)
+
+- getHistory()
+
+### [Artifacts](https://github.com/Yuhsak/mlflow/blob/master/artifacts.ts)
+
+- list()
 
 For more details about each method's args, also see [MLflow REST API Official Docs](https://mlflow.org/docs/latest/rest-api.html).  
 API's are basically implemented just as they are.
