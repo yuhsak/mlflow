@@ -46,10 +46,6 @@ module.exports = class MLflow {
 		}	
 	}
 	
-	purge({horizon_timestamp}) {
-		this.req('post', '/purge', {horizon_timestamp})
-	}
-	
 	get Experiments() {
 		return new Experiments({endpoint: this.endpoint, version: this.version, headers: this.headers})
 	}
