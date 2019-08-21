@@ -7,8 +7,8 @@ module.exports = class Runs extends MLflow {
 		this.path = 'runs'
 	}
 	
-	create({experiment_id, user_id, run_name, source_type, source_name, start_time, ...param}) {
-		this.req('post', '/create', {experiment_id, user_id, run_name, source_type, source_name, start_time, ...param})
+	create({experiment_id, user_id, start_time, tags}) {
+		return this.req('post', '/create', {experiment_id, user_id, start_time, tags})
 	}
 	
 	delete({run_id}) {
@@ -19,36 +19,36 @@ module.exports = class Runs extends MLflow {
 		return this.req('post', '/restore', {run_id})
 	}
 	
-	get({run_uuid}) {
-		return this.req('get', '/get', {run_uuid})
+	get({run_id}) {
+		return this.req('get', '/get', {run_id})
 	}
 	
-	logMetric({run_uuid, key, value, timestamp}) {
-		return this.req('post', '/log-metric', {run_uuid, key, value, timestamp})
+	logMetric({run_id, key, value, timestamp, step}) {
+		return this.req('post', '/log-metric', {run_id, key, value, timestamp, step})
 	}
 	
-	setTag({run_uuid, key, value}) {
-		return this.req('post', '/set-tag', {run_uuid, key, value})
+	setTag({run_id, key, value}) {
+		return this.req('post', '/set-tag', {run_id, key, value})
 	}
 
 	deleteTag({run_id, key}) {
 		return this.req('post', '/delete-tag', {run_id, key})
 	}
 	
-	logParameter({run_uuid, key, value}) {
-		return this.req('post', '/log-parameter', {run_uuid, key, value})
+	logParameter({run_id, key, value}) {
+		return this.req('post', '/log-parameter', {run_id, key, value})
 	}
 
 	logBatch({run_id, metrics, params, tags}) {
 		return this.req('post', '/log-batch', {run_id, metrics, params, tags})
 	}
 	
-	search({experiment_ids, ...param}) {
-		return this.req('post', '/search', {experiment_ids, ...param})
+	search({experiment_ids, filter, run_view_type, max_results, order_by, page_token}) {
+		return this.req('post', '/search', {experiment_ids, filter, run_view_type, max_results, order_by, page_token})
 	}
 	
-	update({run_uuid, status, end_time}) {
-		return this.req('post', '/update', {run_uuid, status, end_time})
+	update({run_id, status, end_time}) {
+		return this.req('post', '/update', {run_id, status, end_time})
 	}
 	
 }

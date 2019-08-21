@@ -24,7 +24,13 @@ module.exports = class MLflow {
 				const body = JSON.stringify(param)
 				return fetch(url, {method, headers: {...requestHeaders, 'Content-Type': this.contentType}, body})
 			} else {
-				const query = param ? '?'+qs.stringify(param) : ''
+				const query = param
+					? '?' + qs.stringify(
+							Object.entries(param)
+								.filter(e => e[1] !== undefined)
+								.reduce((obj, e) => ({...obj, [e[0]]:e[1]}), {})
+						)
+					: ''
 				const urlWithParam = `${url}${query}`
 				return fetch(urlWithParam, {method, headers: requestHeaders})
 			}

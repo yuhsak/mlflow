@@ -7,8 +7,8 @@ module.exports = class Artifacts extends MLflow {
 		this.path = 'artifacts'
 	}
 	
-	list({run_uuid, ...param}) {
-		return this.req('get', '/list', {run_uuid, ...param})
+	list({run_id, path}) {
+		return this.req('get', '/list', {run_id, path})
 	}
 	
 }
