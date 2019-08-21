@@ -7,10 +7,6 @@ module.exports = class Metrics extends MLflow {
 		this.path = 'metrics'
 	}
 	
-	get({run_uuid, metric_key}) {
-		return this.req('get', '/get', {run_uuid, metric_key})
-	}
-	
 	getHistory({run_uuid, metric_key}) {
 		return this.req('get', '/get-history', {run_uuid, metric_key})
 	}
