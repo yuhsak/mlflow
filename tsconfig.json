@@ -8,9 +8,7 @@
 		"skipLibCheck": true,
 		"declaration": true,
 		"pretty": true,
-		"rootDir": "src",
-		"outDir": "lib",
-		"declarationDir": "types"
-	},
-	"include": ["src"]
+		// "rootDir": "src",
+		// "outDir": "lib"
+	}
 }

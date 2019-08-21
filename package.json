@@ -1,10 +1,16 @@
 {
   "name": "mlflow",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "MLflow api client for Node.js",
-  "main": "index.js",
-  "types": "types/index.d.ts",
-  "files": ["package-lock.json", "package.json", "lib", "types", "index.js", "enum.js", "LICENSE", "README.md"],
+  "main": "entrypoint.js",
+  "types": "base.d.ts",
+  "files": [
+    "*.d.ts",
+    "*.js",
+    "!test.*",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"

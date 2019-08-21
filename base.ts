@@ -1,6 +1,5 @@
 import qs from 'querystring'
 import fetch from 'isomorphic-unfetch'
-import {ViewType} from './enum'
 
 export interface ConstructorProps {
 	endpoint: string,

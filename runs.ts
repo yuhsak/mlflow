@@ -1,4 +1,4 @@
-import { MLflowBase, ConstructorProps } from './index'
+import { MLflowBase, ConstructorProps } from './base'
 import { Run, RunInfo, Metric, Param, RunTag } from './interface';
 import { ViewType, RunStatus } from './enum'
 
