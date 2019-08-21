@@ -5,7 +5,7 @@ export enum ViewType {
 }
 
 export enum RunStatus {
-	RUNNING = 'RUNNNING',
+	RUNNING = 'RUNNING',
 	SCHEDULED = 'SCHEDULED',
 	FINISHED = 'FINISHED',
 	FAILED = 'FAILED',
