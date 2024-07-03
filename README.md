@@ -20,7 +20,7 @@ const {Experiments, Runs, Metrics, Artifacts} = client
 ;(async () => {
 	
 	// Get list of all experiments
-	const {experiments} = await Experiments.list()
+	const {experiments} = await Experiments.search(max_results: 1000)
 	const experiment = experiments[0]
 	
 	// Get list of all active runs in specific experiment

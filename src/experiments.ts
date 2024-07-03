@@ -18,12 +18,17 @@ export default class Experiments extends MLflowBase {
 		return this.req('post', '/create', {name, artifact_location})
 	}
 	
-	list({view_type}:{
-		view_type?: ViewType
-	}={}):Promise<{
-		experiments: Experiment[]
+	search({filter, run_view_type, max_results, order_by, page_token}:{
+		filter?: string,
+		run_view_type?: ViewType,
+		max_results?: number,
+		order_by?: string[],
+		page_token?: string
+	}):Promise<{
+		experiments: Experiment[],
+		next_page_token: string
 	}> {
-		return this.req('get', '/list', {view_type})
+		return this.req('post', '/search', {filter, run_view_type, max_results, order_by, page_token})
 	}
 	
 	get({experiment_id}:{
